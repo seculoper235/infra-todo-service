@@ -1,0 +1,9 @@
+name: infra-compose
+services:
+  infra-db:
+    image: postgres:15.4
+    environment:
+      POSTGRES_USER: devteller
+      POSTGRES_PASSWORD: devteller123!
+    ports:
+      - "5432:5432"
