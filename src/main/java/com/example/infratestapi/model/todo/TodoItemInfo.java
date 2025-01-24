@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public record TodoItemInfo(
-        Integer order,
+        Long id,
         String title,
         Boolean completed
 ) {
