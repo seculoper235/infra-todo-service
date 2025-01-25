@@ -36,10 +36,17 @@ public class TodoController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<TodoItemInfo> changeStatus(@PathVariable Long id, @RequestBody Boolean completed) {
-        TodoItemInfo result = todoService.changeStatus(id, completed);
+    @PutMapping("{id}/status")
+    public ResponseEntity<TodoItemInfo> changeStatus(@PathVariable Long id, @RequestBody TodoStatusRequest statusRequest) {
+        TodoItemInfo result = todoService.changeStatus(id, statusRequest.completed());
 
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        todoService.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -45,4 +45,8 @@ public class TodoService {
 
         return todoItem.toModel();
     }
+
+    public void delete(Long id) {
+        todoItemRepository.deleteById(id);
+    }
 }

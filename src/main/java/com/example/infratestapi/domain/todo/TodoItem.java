@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.type.NumericBooleanConverter;
 
 @Entity
-@Table(name = "TODO_ITEM")
+@Table(name = "\"TODO_ITEM\"")
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
