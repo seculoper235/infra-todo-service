@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - property:
+      dbms: postgresql, h2
+      name: function.now
+      value: now()
+  - property:
+      dbms: postgresql, h2
+      name: function.now
+      value: now()
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - changeSet:
+      id: create-todo
+      author: DevTeller
+      changes:
+        - createTable:
+            tableName: TODO_ITEM
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed
+                  type: number
+                  defaultValue: 0
+  - changeSet:
+      id: insert-todo
+      author: DevTeller
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: order
+                  value: 1
+              - column:
+                  name: title
+                  value: "first todo"
+              - column:
+                  name: completed
+                  value: 0
+            tableName: TODO_ITEM
