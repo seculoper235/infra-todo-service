@@ -4,11 +4,15 @@ import com.example.infratestapi.model.todo.TodoItemInfo;
 import com.example.infratestapi.service.TodoService;
 import com.example.infratestapi.web.controller.TodoController;
 import com.example.infratestapi.web.controller.TodoCreateRequest;
+import com.example.infratestapi.web.controller.TodoStatusRequest;
+import com.example.infratestapi.web.security.SecurityConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -24,7 +28,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ActiveProfiles("test")
-@WebMvcTest(value = TodoController.class)
+@WebMvcTest(value = TodoController.class,
+        includeFilters = {
+                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {SecurityConfig.class}),
+        })
 public class TodoItemAPITest {
     @Autowired
     protected MockMvc mockMvc;
@@ -87,13 +94,14 @@ public class TodoItemAPITest {
     @Test
     @DisplayName("TodoItem 완료/미완료 체크 시, 아이템의 상태가 바뀐다")
     void check_todo_item_status_update_completed_status() throws Exception {
+        TodoStatusRequest request = new TodoStatusRequest(true);
         TodoItemInfo result = new TodoItemInfo(2L, "second todo", true);
 
         given(todoService.changeStatus(anyLong(), anyBoolean())).willReturn(result);
 
         mockMvc.perform(put("/api/todo/{id}/status", 2)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("true"))
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(result.id().intValue())))
                 .andExpect(jsonPath("$.title", equalTo(result.title())))
