@@ -10,6 +10,9 @@ https://github.com/seculoper235/Kubernetes_Development
 
 * **Frontend**\
 https://github.com/seculoper235/infra-test-web
+---
+## 💡 관련 글
+[Hikari CP 란?](https://velog.io/@seculoper235/Database-HikariCP-%EB%9E%80)
 
 ---
 ## 📝 backend Image 및 DB 서버
