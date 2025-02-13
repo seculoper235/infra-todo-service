@@ -12,7 +12,9 @@ https://github.com/seculoper235/Kubernetes_Development
 https://github.com/seculoper235/infra-test-web
 ---
 ## 💡 관련 글
-[Hikari CP 란?](https://velog.io/@seculoper235/Database-HikariCP-%EB%9E%80)
+* [Hikari CP 란?](https://velog.io/@seculoper235/Database-HikariCP-%EB%9E%80)
+
+* [로깅 시스템을 구축해보자 1편](https://velog.io/@seculoper235/Kubernetes-%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%95%B4%EB%B3%B4%EC%9E%90-1%ED%8E%B8)
 
 ---
 ## 📝 backend Image 및 DB 서버
