@@ -1,6 +1,6 @@
-# Infra Test API Server
+# Infra Todo API Server
 
-Infra Development에 사용되는 투두리스트 서비스 API 입니다
+Kubernetes Development에 사용되는 투두리스트 서비스 API 입니다
 
 ---
 ## 관련 저장소
